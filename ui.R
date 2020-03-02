@@ -20,7 +20,7 @@ shinyUI(
                get_album()
              ),
              tabPanelWithTitle(
-               "Lost on You (2017)",
+               "Lost on You (2016)",
                "Lost on You is the fourth studio album by LP.
                It was preceded by the singles \"Muddy Waters\",  \"Lost on You\" and 
                \"Other People\".",
@@ -31,6 +31,18 @@ shinyUI(
                "Forever for Now is the third studio album by LP.
                It was preceded by the singles \"Night Like This\" and  \"Someday\".",
                get_album("ffn_input", names(ffn), "Heavenly Light", "ffn_songs")
+             ),
+             tabPanelWithTitle(
+               "Suburban Sprawl and Alcohol (2004)",
+               "Suburban Sprawl and Alcohol is the second studio album by LP.
+               It was edited independently.",
+               get_album("ssa_input", names(ssa), "Wasted", "ssa_songs")
+             ),
+             tabPanelWithTitle(
+               "Heart-Shaped Scar (2001)",
+               "Heart-Shaped Scar is the first studio album by LP.
+               It was edited independently.",
+               get_album("hss_input", names(hss), "Perfect", "hss_songs")
              )
            )
   )

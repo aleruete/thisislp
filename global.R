@@ -7,10 +7,18 @@ names_for_menus <- function(x) {
   y <- names(x) %>% 
     str_replace_all("_", " ") %>% 
     str_replace_all("i m", "I'm") %>% 
-    str_to_title()  
+    str_replace_all(" live", " (Live)") %>% 
+    str_to_title() %>% 
+    str_replace_all("Its ", "It's ")
   
   return(y)
 }
+
+ssa <- suburban_sprawl_and_alcohol
+names(ssa) <- names_for_menus(ssa)
+
+hss <- heart_shaped_scar
+names(hss) <- names_for_menus(hss)
 
 htm <- heart_to_mouth
 names(htm) <- names_for_menus(htm)
