@@ -15,30 +15,22 @@ shinyUI(
              "Albums",
              tabPanelWithTitle(
                "Heart to Mouth (2018)",
-               column(12,
-                      br(),
-                      column(3,
-                             radioButtons(
-                               "htm_input",
-                               "Song:",
-                               choices = names(htm),
-                               selected = "Dreamcatcher"
-                               # selectize = TRUE
-                             )
-                      ),
-                      column(9,
-                             htmlOutput("htm_song"),
-                             HTML("<br><br><i>The lyrics belong to LP or their respective authors.</i><br><br>")
-                      )
-               )
-             ),
-             tabPanelWithTitle(
-               "Forever For Now (2017)",
-               "goes and here"
+               "Heart to Mouth is the fifth studio album by LP.
+               It was preceded by the singles \"Girls Go Wild\" and \"Recovery\".",
+               get_album()
              ),
              tabPanelWithTitle(
                "Lost on You (2017)",
-               "also here"
+               "Lost on You is the fourth studio album by LP.
+               It was preceded by the singles \"Muddy Waters\",  \"Lost on You\" and 
+               \"Other People\".",
+               get_album("loy_input", names(loy), "Muddy Waters", "loy_songs")
+             ),
+             tabPanelWithTitle(
+               "Forever For Now (2014)",
+               "Forever for Now is the third studio album by LP.
+               It was preceded by the singles \"Night Like This\" and  \"Someday\".",
+               get_album("ffn_input", names(ffn), "Heavenly Light", "ffn_songs")
              )
            )
   )
