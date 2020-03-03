@@ -17,7 +17,14 @@ shinyUI(
                "Heart to Mouth (2018)",
                "Heart to Mouth is the fifth studio album by LP.
                It was preceded by the singles \"Girls Go Wild\" and \"Recovery\".",
-               get_album()
+               get_album(),
+               column(9, 
+                      column(6, highchartOutput("htm_analytics_1")),
+                      column(6, highchartOutput("htm_analytics_2")),
+                      column(12, highchartOutput("htm_analytics_3")),
+                      column(6, highchartOutput("htm_analytics_4")),
+                      column(6, highchartOutput("htm_analytics_5")),
+               )
              ),
              tabPanelWithTitle(
                "Lost on You (2016)",
