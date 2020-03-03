@@ -55,6 +55,10 @@ get_album <- function(x = "htm_input", y = names(htm), z = "Dreamcatcher", t = "
   )
 }
 
+colors <- c("#009bae", "#66b7c2", "#eba83a", "#ff0020", "#009f8a",
+            "#ff5c6a", "#e87f4a", "#6b9e89", "#00adc4", "#dfa099",
+            "#6597ce", "#ac9286")
+
 type_1_chart <- function(x = "Heart to Mouth") {
   d <- lp_albums %>%
     filter(album == x) %>%
@@ -62,7 +66,7 @@ type_1_chart <- function(x = "Heart to Mouth") {
     select(`Song name` = name, `Duration (in seconds)` = duration)
   
   p <- hchart(d, "spline", hcaes(x = `Song name`, y = `Duration (in seconds)`)) %>%
-    hc_colors(c("#009bae")) %>% 
+    hc_colors(colors[1]) %>% 
     hc_title(text = "Songs duration")
   
   return(p)
@@ -74,7 +78,7 @@ type_2_chart <- function(x = "Heart to Mouth") {
     select(`Song name` = name, `Popularity` = popularity)
   
   p <- hchart(d, "spline", hcaes(x = `Song name`, y = `Popularity`)) %>%
-    hc_colors(c("#66b7c2")) %>% 
+    hc_colors(colors[2]) %>% 
     hc_title(text = "Songs popularity")
   
   return(p)
@@ -88,7 +92,7 @@ type_3_chart <- function(x = "Heart to Mouth") {
     
   
   p <- hchart(d, "spline", hcaes(x = `Song name`, y = `Value`, group = key)) %>%
-    hc_colors(c("#eba83a", "#ff0020")) %>% 
+    hc_colors(colors[3:4]) %>% 
     hc_title(text = "Songs danceability vs energy")
   
   return(p)
@@ -97,10 +101,10 @@ type_3_chart <- function(x = "Heart to Mouth") {
 type_4_chart <- function(x = "Heart to Mouth") {
   d <- lp_albums %>%
     filter(album == x) %>%
-    select(`Song name` = name, `Loudness (in DB)` = loudness)
+    select(`Song name` = name, `Loudness (in dB)` = loudness)
   
-  p <- hchart(d, "spline", hcaes(x = `Song name`, y = `Loudness (in DB)`)) %>%
-    hc_colors(c("#009f8a")) %>% 
+  p <- hchart(d, "spline", hcaes(x = `Song name`, y = `Loudness (in dB)`)) %>%
+    hc_colors(colors[5]) %>% 
     hc_title(text = "Songs loudness")
   
   return(p)
@@ -112,8 +116,70 @@ type_5_chart <- function(x = "Heart to Mouth") {
     select(`Song name` = name, `Tempo (in BPM)` = tempo)
   
   p <- hchart(d, "spline", hcaes(x = `Song name`, y = `Tempo (in BPM)`)) %>%
-    hc_colors(c("#ff5c6a")) %>% 
+    hc_colors(colors[6]) %>% 
     hc_title(text = "Songs tempo")
+  
+  return(p)
+}
+
+type_6_chart <- function(x = "Heart to Mouth") {
+  d <- lp_albums %>%
+    filter(album == x) %>%
+    select(`Song name` = name, `Key (0 = C, 1 = C#/Db, etc.)` = key)
+  
+  p <- hchart(d, "spline", hcaes(x = `Song name`, y = `Key (0 = C, 1 = C#/Db, etc.)`)) %>%
+    hc_colors(colors[7]) %>% 
+    hc_title(text = "Songs key")
+  
+  return(p)
+}
+
+type_7_chart <- function(x = "Heart to Mouth") {
+  d <- lp_albums %>%
+    filter(album == x) %>%
+    select(`Song name` = name, `Mode (0 = Minor, 1 = Major)` = mode)
+  
+  p <- hchart(d, "spline", hcaes(x = `Song name`, y = `Mode (0 = Minor, 1 = Major)`)) %>%
+    hc_colors(colors[8]) %>% 
+    hc_title(text = "Songs mode")
+  
+  return(p)
+}
+
+type_8_chart <- function(x = "Heart to Mouth") {
+  d <- lp_albums %>%
+    filter(album == x) %>%
+    select(`Song name` = name, `Acousticness` = acousticness, `Speechiness` = speechiness) %>% 
+    gather("key", "Value", -`Song name`)
+  
+  
+  p <- hchart(d, "spline", hcaes(x = `Song name`, y = `Value`, group = key)) %>%
+    hc_colors(colors[9:10]) %>% 
+    hc_title(text = "Songs acousticness vs speechiness")
+  
+  return(p)
+}
+
+type_9_chart <- function(x = "Heart to Mouth") {
+  d <- lp_albums %>%
+    filter(album == x) %>%
+    select(`Song name` = name, `Liveness` = liveness)
+  
+  p <- hchart(d, "spline", hcaes(x = `Song name`, y = `Liveness`)) %>%
+    hc_colors(colors[11]) %>% 
+    hc_title(text = "Songs liveness")
+  
+  return(p)
+}
+
+type_10_chart <- function(x = "Heart to Mouth") {
+  d <- lp_albums %>%
+    filter(album == x) %>%
+    select(`Song name` = name, `Valence` = valence)
+  
+  p <- hchart(d, "spline", hcaes(x = `Song name`, y = `Valence`)) %>%
+    hc_colors(colors[12]) %>% 
+    hc_title(text = "Songs valence (aka positiveness)")
   
   return(p)
 }
