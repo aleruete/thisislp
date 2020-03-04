@@ -10,8 +10,10 @@ shinyUI(
            tabPanelWithTitle(
              "Materials and Methods",
              column(12,
-                    p("I used the packages Rspotify, tidyverse, and highcharter. In addition I created the shinybird
-                      package for the Shiny layout and the lp package to have the lyrics in R.")
+                    HTML("<p>I used the packages Rspotify, tidyverse, and highcharter.
+                         In addition I created the <a target='_blank' href='https://github.com/pachamaltese/shinybird'>shinybird package</a>
+                         for the Shiny layout and the <a target='_blank' href='https://github.com/pachamaltese/lp'>lp package</a>
+                         to have the lyrics in R.<p>")
             )
            ),
            navbarMenu(

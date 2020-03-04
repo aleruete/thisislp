@@ -183,3 +183,5 @@ type_10_chart <- function(x = "Heart to Mouth") {
   
   return(p)
 }
+
+# enableBookmarking(store = "url")

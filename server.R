@@ -97,4 +97,18 @@ shinyServer(function(session, input, output) {
   output$loy_analytics_8 <- renderHighchart({ type_8_chart("Lost on You") })
   output$loy_analytics_9 <- renderHighchart({ type_9_chart("Lost on You") })
   output$loy_analytics_10 <- renderHighchart({ type_10_chart("Lost on You") })
+  
+  # Bookmarking ----
+  
+  # observe({
+  #   # Trigger this observer every time an input changes
+  #   # strip shiny related URL parameters
+  #   reactiveValuesToList(input)
+  #   setBookmarkExclude(c("foobar"))
+  #   session$doBookmark()
+  # })
+  
+  # onBookmarked(function(url) {
+  #   updateQueryString(url)
+  # })
 })
