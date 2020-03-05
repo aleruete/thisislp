@@ -83,19 +83,3 @@ lp_albums <- lp_albums_post_2014_3 %>%
   as_tibble()
 
 saveRDS(lp_albums, file = "data/lp_albums.rds")
-
-# related ----
-
-countries <- countrycode::codelist_panel %>% filter(year == 2007) %>% select(iso2c) %>% drop_na() %>% pull()
-
-lp_top <- map_df(countries,
-                 function(c) { 
-                   Rspotify::getTopTracks("0J7U24vlOOIeMpuaO6Q85A", country = c, token = keys) %>% 
-                     mutate(country = c)
-                  }
-)
-
-lp_top <- lp_top %>% 
-  select(-c(available_markets, duration_ms, track_number, artist_id))
-
-saveRDS(lp_top, file = "data/lp_top.rds")
